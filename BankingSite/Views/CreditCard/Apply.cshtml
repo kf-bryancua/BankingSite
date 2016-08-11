@@ -1,0 +1,90 @@
+﻿@model BankingSite.Models.CreditCardForm
+@{
+    ViewBag.Title = "Apply";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Credit Card Application</h2>
+@using (Html.BeginForm("Apply", "CreditCard", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    if (ViewBag.ValidationErrors != null)
+    {
+        <ul>
+            @foreach (var error in ViewBag.ValidationErrors)
+            {
+                <li>@error</li>
+            }            
+        </ul>
+    }
+
+    <fieldset>
+        <legend>Personal Details</legend>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new {@class = "control-label col-xs-2"})
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Age, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.EmailAddress, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Financial Information</legend>
+        <div class="form-group">
+            @Html.LabelFor(m => m.AnnualIncome, new {@class = "control-label col-xs-2"})
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.AnnualIncome, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2">Existing Credit Cards</label>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.CreditCardLimit1, new {@class = "control-label col-xs-2"})
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.CreditCardLimit1, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.CreditCardLimit2, new {@class = "control-label col-xs-2"})
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.CreditCardLimit2, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.CreditCardLimit3, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.CreditCardLimit3, new { @class = "form-control" })
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Other Information</legend>
+        <div class="form-group">
+            @Html.LabelFor(m => m.AirlineRewardNumber, new { @class = "control-label col-xs-2" })
+            <div class="col-xs-10">
+                @Html.TextBoxFor(m => m.AirlineRewardNumber, new { @class = "form-control" })
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="form-group form-buttons-holder">
+        <div class="col-xs-offset-2 col-xs-10">
+            <button type="submit" id="apply" class="btn btn-primary">Apply Now!</button>
+        </div>
+    </div>
+}
+
+
